@@ -67,7 +67,7 @@
 (defun run-check (program args &key output ignore-error-status)
   (when *trace-c2ffi*
     (format *debug-io* "~&; Invoking: ~A~{ ~A~}~%" program args))
-  (zerop (nth-value 2 (uiop:run-program (list* program args) :output output :ignore-error-status ignore-error-status))))
+  (zerop (nth-value 2 (uiop:run-program (list* program args) :output output :error-output *trace-c2ffi* :ignore-error-status ignore-error-status))))
 
 (defun c2ffi-p ()
   "This is a hack to determine if c2ffi exists; it assumes if it
